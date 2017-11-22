@@ -38,7 +38,6 @@ public class VeiculoController{
 
     @PutMapping
     public ResponseEntity<?> alterar(@RequestBody Veiculo veiculo) {
-        System.out.println(veiculo.getNome());
         if (veiculo.getId() != 0) {
             veiculoService.salvar(veiculo);
             return new ResponseEntity<Object>("alterou", HttpStatus.OK);
@@ -52,6 +51,5 @@ public class VeiculoController{
         veiculoService.deletar(id);
         return new ResponseEntity<Object>("deletou", HttpStatus.OK);
     }
-
 
 }
