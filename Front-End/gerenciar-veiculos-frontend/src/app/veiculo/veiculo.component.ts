@@ -21,14 +21,13 @@ export class VeiculoComponent implements OnInit {
 
     ngOnInit() {
 
-      this.layout.title = 'Lista de veiculo';
+    this.layout.title = 'Lista de Veiculo';
+    // this.dtOptions = DATATABLE_OPTIONS;
 
-      // this.dtOptions = DATATABLE_OPTIONS;
-      this.veiculoService.listar()
-        .subscribe(veiculos => {
-          this.veiculos = veiculos;
-          this.dtTrigger.next();
-        });
-    }
-
+    this.veiculoService.findAll()
+    .subscribe(veiculos => {
+      this.veiculos = veiculos;
+      this.dtTrigger.next();
+    });
+  }
 }

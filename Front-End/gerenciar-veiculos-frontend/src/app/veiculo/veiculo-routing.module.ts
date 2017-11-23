@@ -1,38 +1,17 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+
 import {VeiculoComponent} from './veiculo.component';
-import {VeiculoFormularioComponent} from './veiculo-formulario/veiculo-formulario.component';
+import {VeiculoListComponent} from './veiculo-list/veiculo-list.component';
+import {VeiculoFormComponent} from './veiculo-form/veiculo-form.component';
+import {VeiculoDetailsComponent} from './veiculo-details/veiculo-details.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    data: {
-      title: 'veiculos'
-    },
-    children: [
-      {
-        path: '',
-        data: {
-          title: 'Listar'
-        },
-        component: VeiculoComponent
-      },
-      {
-        path: 'novo',
-        data: {
-          title: 'Nova'
-        },
-        component: VeiculoFormularioComponent
-      },
-      {
-        path: 'alterar/:id',
-        data: {
-          title: 'Alterar'
-        },
-        component: VeiculoFormularioComponent
-      }
-    ]
-  }
+  { path: '', component: VeiculoComponent},
+  { path: 'veiculo', component: VeiculoListComponent},
+  { path: 'veiculo/visualizar/:id', component: VeiculoDetailsComponent},
+  { path: 'veiculo/novo', component: VeiculoFormComponent},
+  { path: 'veiculo/alterar/:id', component: VeiculoFormComponent},
 ];
 
 @NgModule({

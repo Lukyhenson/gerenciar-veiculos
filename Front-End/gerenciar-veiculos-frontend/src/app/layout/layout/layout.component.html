@@ -8,8 +8,14 @@
         <li class="nav-item active" routerLinkActive="nav-active">
           <a class="nav-link" [routerLink]="['/dashboard']">DashBoard<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" routerLinkActive="nav-active">
-          <a class="nav-link" [routerLink]="['/veiculo']">Veiculo</a>
+        <li class="nav-item dropdown" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Veiculo
+          </a>
+          <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/veiculo']">Veiculo</a>
+            <a class="dropdown-item" [routerLink]="['/veiculo/novo']">Cadastrar Veiculo</a>
+          </div>
         </li>
       </ul>
     </div>

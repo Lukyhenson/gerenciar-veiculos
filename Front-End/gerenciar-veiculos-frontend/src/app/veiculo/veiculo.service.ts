@@ -14,27 +14,41 @@ export class VeiculoService {
 
   constructor(private http: Http) {
   }
-
-  listar(): Observable<Veiculo[]> {
-    return this.http.get(`${URI_SERVER_API}/veiculo`)
-      .map(response => response.json().data)
-      .catch(ErrorHandler.handleError)
-  }
-
-  visualizar(id: number): Observable<Veiculo> {
-    return this.http.get(`${URI_SERVER_API}/veiculo/${id}`)
-      .map(response => response.json().data)
+  findAll(): Observable<Veiculo[]>{
+    return this.http
+      .get(`${URI_SERVER_API}/veiculo`)
+      .map(response => response.json().content)
       .catch(ErrorHandler.handleError);
   }
 
-  salvar(veiculo: Veiculo): Observable<any> {
-    // tslint:disable-next-line:prefer-const
-    let headers = new Headers({'Content-Type': 'application/json'});
-    // tslint:disable-next-line:prefer-const
-    let options = new RequestOptions({headers: headers});
+  findOne(id: number): Observable<Veiculo>{
+    return this.http
+      .get(`${URI_SERVER_API}/veiculo/${id}`)
+      .map(response => response.json().content)
+      .catch(ErrorHandler.handleError);
+}
 
-    return this.http.post(`${URI_SERVER_API}/veiculo`,
-      JSON.stringify(veiculo), options)
-      .map(response => response.json());
-  }
+  save(veiculo: Veiculo): Observable<Veiculo> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+
+        if (veiculo.id) {
+          return this.http
+            .put(`${URI_SERVER_API}/veiculo`, JSON.stringify(veiculo), options)
+            .map(response => response.json().content)
+            .catch(ErrorHandler.handleError);
+        } else {
+          return this.http
+            .post(`${URI_SERVER_API}/veiculo`, JSON.stringify(veiculo), options)
+            .map(response => response.json().content)
+            .catch(ErrorHandler.handleError);
+        }
+      }
+
+      delete(id: number): Observable<any>{
+        return this.http
+          .delete(`${URI_SERVER_API}/veiculo/${id}`)
+          .map(response => response.json().content)
+          .catch(ErrorHandler.handleError);
+    }
 }
