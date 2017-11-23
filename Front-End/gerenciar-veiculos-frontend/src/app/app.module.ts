@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.router';
-import {LayoutDefaultComponent} from './layout/layout-default/layout-default.component';
+import {LayoutDefaultComponent} from './layout/layout/layout.component';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {VeiculoService} from './veiculo/veiculo.service';
 import {VeiculoModule} from './veiculo/veiculo.module';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LayoutDefaultComponent} from '../layout/layout-default/layout-default.component';
+import {LayoutDefaultComponent} from '../layout/layout/layout.component';
 
 @Component({
   templateUrl: './dashboard.component.html'

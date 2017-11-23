@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LayoutDefaultComponent} from '../layout/layout-default/layout-default.component';
+import {LayoutDefaultComponent} from '../layout/layout/layout.component';
 import {VeiculoService} from './veiculo.service';
 import {Veiculo} from './veiculo.model';
 import {Subject} from 'rxjs/Subject';
