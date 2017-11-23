@@ -1,23 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { provideRoutes} from '@angular/router';
-import { Http, HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app.router';
+import {LayoutDefaultComponent} from './layout/layout-default/layout-default.component';
+import {BsDropdownModule} from 'ngx-bootstrap';
+import {VeiculoService} from './veiculo/veiculo.service';
+import {VeiculoModule} from './veiculo/veiculo.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutDefaultComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    BsDropdownModule.forRoot(),
+    VeiculoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

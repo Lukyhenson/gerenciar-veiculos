@@ -32,12 +32,6 @@ public class Veiculo implements Serializable {
     @NotEmpty
     private String modelo;
 
-    @Column(name = "versao")
-    @Getter
-    @Setter
-    @NotEmpty
-    private long versao;
-
     @Column(name = "detalhes")
     @Getter
     @Setter
@@ -72,14 +66,6 @@ public class Veiculo implements Serializable {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public long getVersao() {
-        return versao;
-    }
-
-    public void setVersao(long versao) {
-        this.versao = versao;
     }
 
     public String getDetalhes() {
