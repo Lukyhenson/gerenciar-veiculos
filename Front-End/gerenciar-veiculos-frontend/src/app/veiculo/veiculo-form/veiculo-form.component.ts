@@ -32,47 +32,45 @@ export class VeiculoFormComponent implements OnInit {
     this.layout.title =
       this.veiculo.id == null ? "Novo Veiculo" : "Alterar Veiculo";
 
-    this.veiculoForm = this.builder.group(
-      {
-        id: [],
-        nome: this.builder.control("", [
-          Validators.required,
-          Validators.maxLength(50)
-        ]),
-        modelo: this.builder.control("", [
-          Validators.required,
-          Validators.maxLength(50)
-        ]),
-        fabricante: this.builder.control("", [
-          Validators.required,
-          Validators.maxLength(50)
-        ]),
-        detalhes: this.builder.control("", [
-          Validators.required,
-          Validators.maxLength(200) 
-        ])
-      },
-      {});
-
-      if (this.veiculo.id != null) {
-        this.veiculoService.findOne(this.veiculo.id)
-          .subscribe(veiculo => {
-            //this.selectedEstado = estado;
-            this.veiculoForm = this.builder.group(veiculo, {});
-          })
-      }
-  
-
-  }
-
-  salvar(veiculo: Veiculo) {
-    this.veiculoService.save(veiculo).subscribe(response => {
-      this.redirect();
+    this.veiculoForm = this.builder.group({
+      id: [],
+      nome: this.builder.control("", [
+        Validators.required,
+        Validators.maxLength(50)
+      ]),
+      modelo: this.builder.control("", [
+        Validators.required,
+        Validators.maxLength(50)
+      ]),
+      fabricante: this.builder.control("", [
+        Validators.required,
+        Validators.maxLength(50)
+      ]),
+      detalhes: this.builder.control("", [
+        Validators.required,
+        Validators.maxLength(200)
+      ])
     });
+
+    if (this.veiculo.id != null) {
+      this.veiculoService.findOne(this.veiculo.id).subscribe(veiculo => {
+        this.veiculoForm = this.builder.group(veiculo, {});
+      });
+    }
   }
 
-  public redirect(): void {
-    this.router.navigate(['/veiculo']);
+  salvar(veiculo: any): void {
+    this.veiculoService.save(veiculo).subscribe(
+      (veiculo: Veiculo) => {
+        this.redirecionar();
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
+  public redirecionar(): void {
+    this.router.navigate(["/veiculo/listar"]);
+  }
 }

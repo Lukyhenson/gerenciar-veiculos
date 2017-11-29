@@ -8,7 +8,7 @@ import {veiculoRoutes} from './veiculo/veiculo-routing.module';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'veiculo',
     pathMatch: 'full',
   },
   {
@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'veiculo',
     pathMatch: 'full',
   },
 ];

@@ -11,11 +11,10 @@
                 <div class="card-body">
                   <p><code><strong>id:</strong> {{veiculo.id}}</code></p>
                   <p><strong>Modelo:</strong> {{veiculo.modelo}}</p>
-                  <p><strong>Detalhes:</strong> {{veiculo.detalhes}}</p>
                   <p><strong>Fabricante:</strong> {{veiculo.fabricante}}</p>
                 </div>
             
-                <footer class="card-footer text-right">
+                <footer class="card-footer text-center">
                   <button class="btn btn-primary" [routerLink]="['/veiculo/visualizar', veiculo.id]">Visualizar</button>
                   <button class="btn btn-secondary" [routerLink]="['/veiculo/alterar', veiculo.id]">Editar</button>
                   <button class="btn btn-danger" (click)="deleteVeiculo(veiculo.id)">Deletar</button>

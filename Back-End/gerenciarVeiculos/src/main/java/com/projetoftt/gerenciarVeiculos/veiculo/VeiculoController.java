@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/veiculo")
 @CrossOrigin(origins = "*")
-public class VeiculoController{
+public class VeiculoController {
 
     @Autowired
     VeiculoService veiculoService;
@@ -31,25 +31,25 @@ public class VeiculoController{
     }
 
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody Veiculo veiculo){
+    public ResponseEntity<?> salvar(@RequestBody Veiculo veiculo) {
         veiculoService.salvar(veiculo);
-        return new ResponseEntity<Object>("salvou", HttpStatus.CREATED);
+        return new ResponseEntity<Object>(veiculo, HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity<?> alterar(@RequestBody Veiculo veiculo) {
         if (veiculo.getId() != 0) {
             veiculoService.salvar(veiculo);
-            return new ResponseEntity<Object>("alterou", HttpStatus.OK);
+            return new ResponseEntity<Object>(veiculo, HttpStatus.OK);
         } else {
-            return new ResponseEntity<Object>("nao alterou", HttpStatus.OK);
+            return new ResponseEntity<Object>("nao alterou", HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletar(@PathVariable long id) {
         veiculoService.deletar(id);
-        return new ResponseEntity<Object>("deletou", HttpStatus.OK);
+        return new ResponseEntity<Object>(veiculo, HttpStatus.OK);
     }
 
 }

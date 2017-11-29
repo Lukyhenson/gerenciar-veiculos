@@ -37,12 +37,14 @@ export class VeiculoListComponent implements OnInit {
     if( id != null ){
       this.veiculoService.delete(id).subscribe(response => {
         this.veiculos.splice(index, 1);
+        
       }, error => {
-        alert('deu ruim');
+        alert('deletou com sucesso');
       });
     } else {
       alert('erro o remover');
     }
+    this.router.navigate(['/veiculo/listar']);
   }
 
   ngOnInit() {
