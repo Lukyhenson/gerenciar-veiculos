@@ -20,14 +20,14 @@ export class VeiculoService {
   findAll(): Observable<Veiculo[]> {
     return this.http
       .get(`${URI_SERVER_API}/veiculo`)
-      .map(response => response.json())
+      .map(response => response.json().content)
       .catch(ErrorHandler.handleError);
   }
 
   findOne(id: number): Observable<Veiculo> {
     return this.http
       .get(`${URI_SERVER_API}/veiculo/${id}`)
-      .map(response => response.json())
+      .map(response => response.json().content)
       .catch(ErrorHandler.handleError);
   }
 
@@ -35,18 +35,18 @@ export class VeiculoService {
     if (veiculo.id == null) {
       return this.http
         .post(`${URI_SERVER_API}/veiculo`, veiculo)
-        .map(res => res.json());
+        .map(res => res.json().content);
     } else {
       return this.http
         .put(`${URI_SERVER_API}/veiculo/${veiculo.id}`, veiculo)
-        .map(res => res.json());
+        .map(res => res.json().content);
     }
   }
 
   delete(id: number): Observable<any> {
     return this.http
       .delete(`${URI_SERVER_API}/veiculo/${id}`)
-      .map(response => response.json())
+      .map(response => response.json().content)
       .catch(ErrorHandler.handleError);
   }
 }
