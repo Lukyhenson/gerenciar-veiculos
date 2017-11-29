@@ -1,3 +1,44 @@
-<p>
-  veiculo-form works!
-</p>
+
+  <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+            <div class="row">
+              <form [formGroup]="veiculoForm" novalidate>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="require" for="input-required" label="Nome">Nome do Veículo</label>
+                      <input type="text" class="form-control" formControlName="nome" id="input-required" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="require" for="input-required" label="Modelo">Modelo do Veículo</label>
+                        <input type="text" class="form-control" formControlName="modelo" id="input-required" autocomplete="off">
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="require" for="input-required" label="Fabricante">Fabricante do Veículo</label>
+                        <input type="text" class="form-control" formControlName="fabricante" id="input-required" autocomplete="off">
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <label label="Detalhes">Detalhes do Veículo</label>
+                        <textarea class="form-control" formControlName="detalhes"></textarea>
+                      </div>
+                  </div>
+                  <div class="fab fab-fixed">
+                      <button (click)="salvar(veiculoForm.value)" class="btn btn-float btn-success btn-save">
+                        <i class="fa fa-save"></i>
+                      </button>
+                  </div>
+              </form>
+            </div>
+        </div>    
+      </div>
+  </div>
+
+
+<p>Form value: {{ veiculoForm.value | json }}</p>
+<p>Veiculos value: {{ veiculos | json }}</p>

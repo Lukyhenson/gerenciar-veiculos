@@ -17,17 +17,12 @@ export class VeiculoComponent implements OnInit {
     veiculos: Veiculo[];
 
     constructor(public layout: LayoutDefaultComponent, public veiculoService: VeiculoService) {
+
     }
 
     ngOnInit() {
 
-    this.layout.title = 'Lista de Veiculo';
-    // this.dtOptions = DATATABLE_OPTIONS;
-
-    this.veiculoService.findAll()
-    .subscribe(veiculos => {
-      this.veiculos = veiculos;
-      this.dtTrigger.next();
-    });
-  }
+      this.layout.title = 'Veículo Admin';
+      
+    }
 }

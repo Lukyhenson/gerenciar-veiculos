@@ -14,28 +14,39 @@ import {Veiculo} from '../veiculo.model';
   styleUrls: ['./veiculo-list.component.css']
 })
 export class VeiculoListComponent implements OnInit {
+  router: any;
 
   // dtOptions: DataTables.Settings = {}
   dtTrigger: Subject<Veiculo> = new Subject()
 
   veiculos: Veiculo[]
 
-  constructor(
-    public layout: LayoutDefaultComponent, 
-    public veiculoService: VeiculoService
-  ) { }
+  constructor(public layout: LayoutDefaultComponent, public veiculoService: VeiculoService) { 
+    this.layout.title = 'Lista de Veículos';
+
+    this.veiculoService.findAll().subscribe(
+      veiculos => {
+        console.log(veiculos);
+        this.veiculos = veiculos;
+      }
+    );
+
+  }
+
+  deleteVeiculo(id: number, index: number): void{
+    if( id != null ){
+      this.veiculoService.delete(id).subscribe(response => {
+        this.veiculos.splice(index, 1);
+      }, error => {
+        alert('deu ruim');
+      });
+    } else {
+      alert('erro o remover');
+    }
+  }
 
   ngOnInit() {
-
-    this.layout.title = 'Lista de Veiculo';
-    // this.dtOptions = DATATABLE_OPTIONS;
-
-    this.veiculoService.findAll()
-    .subscribe(veiculos => {
-      this.veiculos = veiculos;
-      this.dtTrigger.next();
-    });
-
+    
   }
 
 }

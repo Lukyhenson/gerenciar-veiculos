@@ -1,3 +1,26 @@
-<p>
-  veiculo-list works!
-</p>
+<div class="col-md-12">
+    <div *ngFor="let veiculo of veiculos">
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+              <header class="card-header">
+                  <h4 class="card-title">
+                    <strong>Nome:</strong> {{veiculo.nome}}
+                  </h4>
+                </header>
+            
+                <div class="card-body">
+                  <p><code><strong>id:</strong> {{veiculo.id}}</code></p>
+                  <p><strong>Modelo:</strong> {{veiculo.modelo}}</p>
+                  <p><strong>Detalhes:</strong> {{veiculo.detalhes}}</p>
+                  <p><strong>Fabricante:</strong> {{veiculo.fabricante}}</p>
+                </div>
+            
+                <footer class="card-footer text-right">
+                  <button class="btn btn-primary" [routerLink]="['/veiculo/visualizar', veiculo.id]">Visualizar</button>
+                  <button class="btn btn-secondary" [routerLink]="['/veiculo/alterar', veiculo.id]">Editar</button>
+                  <button class="btn btn-danger" (click)="deleteVeiculo(veiculo.id)">Deletar</button>
+                </footer>
+          </div>
+        </div>
+      </div>
+</div>

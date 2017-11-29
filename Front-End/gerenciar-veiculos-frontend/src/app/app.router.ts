@@ -3,6 +3,8 @@ import {NgModule} from '@angular/core';
 
 import {LayoutDefaultComponent} from './layout/layout/layout.component';
 
+import {veiculoRoutes} from './veiculo/veiculo-routing.module';
+
 export const routes: Routes = [
   {
     path: '',
@@ -18,11 +20,7 @@ export const routes: Routes = [
         data: {title: 'Dashboard'},
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },
-      {
-        path: 'veiculo',
-        data: {title: 'veiculo'},
-        loadChildren: './veiculo/veiculo.module#VeiculoModule'
-      },
+      ...veiculoRoutes
     ]
   },
   {
